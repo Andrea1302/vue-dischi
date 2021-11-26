@@ -33,7 +33,7 @@ export default {
   color: #2c3e50;
 }
 header{
-  background-color: rgb(59, 58, 58);
+  background-color: #2e3a46;
   padding: 10px 5px;
 }
 .logo{
@@ -41,5 +41,9 @@ header{
   font-size: 40px;
   background-color: black;
   border-radius: 50%;
+}
+main{
+  background-color: #1e2d3b;
+  padding: 61px 0;
 }
 </style>
