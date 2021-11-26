@@ -6,16 +6,19 @@
 
     <main>
       <!-- qui ci sarà il componente  -->
+      <DischiContainer/>
     </main>
   </div>
 </template>
 
 <script>
 // import fontawesome from "fontawesome"
+import DischiContainer from "./components/DischiContainer.vue"
 
 export default {
   name: 'App',
   components: {
+    DischiContainer,
   }
 }
 </script>
@@ -34,7 +37,7 @@ export default {
 }
 header{
   background-color: #2e3a46;
-  padding: 10px 5px;
+  padding: 10px 20px;
 }
 .logo{
   color: #1ed760;
