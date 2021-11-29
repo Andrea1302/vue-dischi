@@ -38,12 +38,12 @@ export default {
 header{
   background-color: #2e3a46;
   padding: 10px 20px;
-}
-.logo{
-  color: #1ed760;
-  font-size: 40px;
-  background-color: black;
-  border-radius: 50%;
+  .logo{
+    color: #1ed760;
+    font-size: 40px;
+    background-color: black;
+    border-radius: 50%;
+  }
 }
 main{
   background-color: #1e2d3b;

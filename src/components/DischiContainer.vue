@@ -1,15 +1,21 @@
 <template>
-  <div id="container_disks">
-    <disk
-        v-for="disk,i in disks"
-        :key="i"
-        :details="disk"
-    />
+<div>
+    <Select @changeSelect="changeGen" />
+    <div id="container_disks">
+      <disk
+          v-for="disk,i in filteredListaDisk"
+          :key="i"
+          :details="disk"
+      />
   </div>
+</div>
+ 
 </template>
 
 <script>
 import disk from "./Disco.vue";
+import Select from "./Select.vue";
+
 import axios from "axios";
 
 
@@ -17,15 +23,28 @@ export default {
   name: 'DischiContainer',
   components: {
     disk,
+    Select,
   },
   data (){
       return {
           apiUrl : "https://flynn.boolean.careers/exercises/api/array/music",
-          disks : []
+          disks : [],
+          genres : ""
       }
   },
   created (){
       this.getDisks();
+  },
+  computed:{
+    filteredListaDisk(){
+      if ( this.genres === ""){
+        return this.disks
+      }
+
+      return this.disks.filter((item)=>{
+        return item.genre.includes(this.genres)
+      })
+    }
   },
   methods : {
       getDisks(){
@@ -33,8 +52,11 @@ export default {
           .get(this.apiUrl)
           .then((result)=>{
               this.disks = result.data.response
-              console.log(this.disks);
           })
+      },
+      changeGen(element){
+        console.log(element);
+          this.genres = element
       }
   }
 }
