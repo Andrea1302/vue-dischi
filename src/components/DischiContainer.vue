@@ -1,7 +1,8 @@
 <template>
 <div>
-    <Select @changeSelect="changeGen" 
-      :info="disks"
+    <Select
+      @changeSelect="changeGen" 
+      :info="genres"
     />
     <div id="container_disks">
       <Disk
@@ -31,8 +32,7 @@ export default {
       return {
           apiUrl : "https://flynn.boolean.careers/exercises/api/array/music",
           disks : [],
-          genres : "",
-
+          selectedGenre : ""
       }
   },
   created (){
@@ -40,15 +40,25 @@ export default {
   },
   computed:{
     filteredListaDisk(){
-      if ( this.genres === ""){
+      if ( this.selectedGenre === ""){
+        return this.disks
+      } else if (this.selectedGenre === "tutti") {
         return this.disks
       }
 
       return this.disks.filter((item)=>{
-        return item.genre.includes(this.genres)
+        return item.genre.includes(this.selectedGenre)
       })
     },
-    
+    genres() {
+      const generi = [];
+      this.disks.forEach((element)=>{
+        if ( generi.includes(element.genre) === false) {
+          generi.push(element.genre)
+        }
+      });
+      return generi;
+    }
   },
   methods : {
       getDisks(){
@@ -59,14 +69,14 @@ export default {
           })
       },
       changeGen(element){
-        console.log(element);
-          this.genres = element
-      }
+        // console.log(element);
+        this.selectedGenre = element
+      },
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped lang="scss">
 #container_disks{
     width: 70%;

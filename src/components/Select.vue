@@ -1,8 +1,9 @@
 <template>
 <form id="seleziona" action="">
-    <select id="style_select" @change="selectOption($event)">
+    <select id="style_select" @change="selectOption($event)" >
         <option selected disabled value=""> Seleziona un genere musicale</option>
-        <option v-for="item,i in info " :key="i" :value="item.genre"> {{item.genre}} </option>
+        <option value="tutti">Tutti i Generi</option>
+        <option v-for="opzione,i in info " :key="i" :value="opzione"> {{opzione}} </option>
     </select>
 </form>
  
@@ -12,18 +13,17 @@
 export default {
   name: 'Select',
   props : {
-      info : Object
+      info : Array
   },
   data () {
       return {
-          selectedOption : null,
-          duplicato : false
+          selectedOption : null
       }
   },
   methods : {
-      selectOption(event){
+      selectOption(event) {
           this.selectedOption = event.target.value
-          this.$emit('changeSelect',this.selectedOption)
+          this.$emit('changeSelect', this.selectedOption);
       }
   }
 }
