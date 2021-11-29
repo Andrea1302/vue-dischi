@@ -2,7 +2,7 @@
 <div>
     <Select @changeSelect="changeGen" />
     <div id="container_disks">
-      <disk
+      <Disk
           v-for="disk,i in filteredListaDisk"
           :key="i"
           :details="disk"
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import disk from "./Disco.vue";
+import Disk from "./Disco.vue";
 import Select from "./Select.vue";
 
 import axios from "axios";
@@ -22,7 +22,7 @@ import axios from "axios";
 export default {
   name: 'DischiContainer',
   components: {
-    disk,
+    Disk,
     Select,
   },
   data (){

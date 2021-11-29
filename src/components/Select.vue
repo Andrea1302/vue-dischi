@@ -2,7 +2,7 @@
 <form id="seleziona" action="">
     <select id="style_select" @change="selectOption($event)">
         <option selected disabled value=""> Seleziona un genere musicale</option>
-        <option v-for="opzione,i in details" :key="i" >
+        <option v-for="opzione,i in details" :key="i" value="opzione.genre"> {{opzione.genre}} </option>
     </select>
 </form>
  
