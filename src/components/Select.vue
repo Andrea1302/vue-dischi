@@ -2,7 +2,7 @@
 <form id="seleziona" action="">
     <select id="style_select" @change="selectOption($event)">
         <option selected disabled value=""> Seleziona un genere musicale</option>
-        <option v-for="opzione,i in details" :key="i" value="opzione.genre"> {{opzione.genre}} </option>
+        <option v-for="item,i in info " :key="i" :value="item.genre"> {{item.genre}} </option>
     </select>
 </form>
  
@@ -12,7 +12,7 @@
 export default {
   name: 'Select',
   props : {
-      details : Object
+      info : Object
   },
   data () {
       return {

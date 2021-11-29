@@ -1,6 +1,8 @@
 <template>
 <div>
-    <Select @changeSelect="changeGen" />
+    <Select @changeSelect="changeGen" 
+      :info="disks"
+    />
     <div id="container_disks">
       <Disk
           v-for="disk,i in filteredListaDisk"
