@@ -16,7 +16,8 @@ export default {
   },
   data () {
       return {
-          selectedOption : null
+          selectedOption : null,
+          duplicato : false
       }
   },
   methods : {

@@ -31,7 +31,8 @@ export default {
       return {
           apiUrl : "https://flynn.boolean.careers/exercises/api/array/music",
           disks : [],
-          genres : ""
+          genres : "",
+
       }
   },
   created (){
@@ -46,7 +47,8 @@ export default {
       return this.disks.filter((item)=>{
         return item.genre.includes(this.genres)
       })
-    }
+    },
+    
   },
   methods : {
       getDisks(){
