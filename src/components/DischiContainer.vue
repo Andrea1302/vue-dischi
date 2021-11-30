@@ -1,9 +1,5 @@
 <template>
 <div>
-    <!-- <Select
-      @changeSelect="changeGen" 
-      :info="genres"
-    /> -->
     <div id="container_disks">
       <Disk
           v-for="disk,i in filteredListaDisk"
@@ -17,8 +13,6 @@
 
 <script>
 import Disk from "./Disco.vue";
-// import Select from "./Select.vue";
-
 import axios from "axios";
 
 
@@ -29,7 +23,6 @@ export default {
   },
   components: {
     Disk,
-    // Select,
   },
   data (){
       return {
@@ -53,15 +46,7 @@ export default {
         return item.genre.includes(this.genereSelezionato)
       })
     },
-    genres() {
-      const generi = [];
-      this.disks.forEach((element)=>{
-        if ( generi.includes(element.genre) === false) {
-          generi.push(element.genre)
-        }
-      });
-      return generi;
-    }
+    
   },
   methods : {
       getDisks(){
@@ -70,10 +55,6 @@ export default {
           .then((result)=>{
               this.disks = result.data.response
           })
-      },
-      changeGen(element){
-        // console.log(element);
-        this.selectedGenre = element
       },
   }
 }

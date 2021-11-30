@@ -96,7 +96,6 @@ header{
   }
 }
 main{
-  // background-color: #1e2d3b;
   padding: 61px 0;
 }
 </style>
