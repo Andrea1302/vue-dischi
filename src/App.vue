@@ -2,24 +2,68 @@
   <div id="app">
     <header>
       <i class="fab fa-spotify logo"></i>
+      <Select
+        @changeSelect="valueGen"
+        :filtro="genres"
+      />
     </header>
 
     <main>
       <!-- qui ci sarà il componente  -->
-      <DischiContainer/>
+      <DischiContainer
+        :genereSelezionato="selectedGenre"
+      />
     </main>
   </div>
 </template>
 
 <script>
 // import fontawesome from "fontawesome"
-import DischiContainer from "./components/DischiContainer.vue"
+import DischiContainer from "./components/DischiContainer.vue";
+import Select from "./components/Select.vue";
+import axios from "axios";
 
 export default {
   name: 'App',
   components: {
     DischiContainer,
+    Select
+  },
+  data (){
+    return {
+      apiUrl : "https://flynn.boolean.careers/exercises/api/array/music",
+      disks : [],
+      selectedGenre : ""
+    }
+    
+  },
+  created(){
+    this.getDisks()
+  },
+  computed : {
+    genres() {
+      const generi = [];
+      this.disks.forEach((element)=>{
+        if ( generi.includes(element.genre) === false) {
+          generi.push(element.genre)
+        }
+      });
+      return generi;
+    }
+  },
+  methods : {
+    getDisks(){
+          axios
+          .get(this.apiUrl)
+          .then((result)=>{
+              this.disks = result.data.response
+          })
+      },
+      valueGen(elemento){
+        this.selectedGenre = elemento
+      }
   }
+  
 }
 </script>
 
@@ -41,6 +85,9 @@ body{
 header{
   background-color: #2e3a46;
   padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   .logo{
     color: #1ed760;
     font-size: 40px;

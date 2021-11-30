@@ -3,7 +3,7 @@
     <select id="style_select" @change="selectOption($event)" >
         <option selected disabled value=""> Seleziona un genere musicale</option>
         <option value="tutti">Tutti i Generi</option>
-        <option v-for="opzione,i in info " :key="i" :value="opzione"> {{opzione}} </option>
+        <option v-for="opzione,i in filtro " :key="i" :value="opzione"> {{opzione}} </option>
     </select>
 </form>
  
@@ -13,7 +13,7 @@
 export default {
   name: 'Select',
   props : {
-      info : Array
+      filtro : Array
   },
   data () {
       return {
@@ -31,11 +31,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-    #seleziona{
-        display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
-    }
+    // #seleziona{
+    //     display: flex;
+    //     justify-content: center;
+    //     margin-bottom: 20px;
+    // }
     #style_select{
         background-color: #2e3a46;
         color: white;
